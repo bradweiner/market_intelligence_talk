@@ -31,7 +31,8 @@ style_duo(primary_color = "#000000",
           header_font_google = google_font("Helvetica Neue"),
           text_font_google   = google_font("Helvetica Neue Roman", "300", "300i"),
           code_font_google   = google_font("Helvetica Neue Light"),
-          title_slide_background_image = "images/flashlight_2.jpg")
+          title_slide_background_image = "images/cropped-baseball-field-grass-turf.jpg",
+          title_slide_text_color = "white")
 ```
 ---
 class: inverse, left, top
@@ -275,11 +276,6 @@ p <- ggplot(b.agg, aes(x = year_id, y = hr_to_ab_ratio)) +
 p
 ```
 ---
-class: center, middle
-background-image: url(images/home_run.png)
-background-size: contain
-### Home Runs per at bat by year
----
 ```{r echo=FALSE, fig.align='center', fig.asp=3/4, fig.retina=3, message=FALSE, warning=FALSE, dpi=300, out.width="100%", paged.print=FALSE, cache=TRUE}
 
 #this chunk plots the first thing
@@ -301,6 +297,204 @@ p <- ggplot(b.agg, aes(x = year_id, y = hr_to_ab_ratio)) +
     # geom_rect(aes(xmin=1977,xmax=1992,ymin=0,ymax=Inf),fill = pal[5],alpha=.01) +
     # geom_rect(aes(xmin=1994,xmax=2005,ymin=0,ymax=Inf),fill = pal[6],alpha=.01) +
     # geom_rect(aes(xmin=2006,xmax=2018,ymin=0,ymax=Inf),fill = pal[7],alpha=.01) +
+    scale_y_continuous(limits = c(0,0.04)) +
+    scale_x_continuous(limits = c(1870,2025),n.breaks = 20) +
+    labs(x = "",
+         y = "Home Runs Per At Bat",
+         title = "Home Runs per At Bat by Year 1870 - 2018",
+         subtitle = "Ten Year Moving Average") +
+    theme_minimal()
+
+
+p
+```
+---
+```{r echo=FALSE, fig.align='center', fig.asp=3/4, fig.retina=3, message=FALSE, warning=FALSE, dpi=300, out.width="100%", paged.print=FALSE, cache=TRUE}
+
+#this chunk plots the first thing
+
+pal <- fromthebottom::phish_palettes$hoist
+
+p <- ggplot(b.agg, aes(x = year_id, y = hr_to_ab_ratio)) +
+    geom_line(size=1.5,
+              color = "red",alpha = 1) +
+    geom_line(aes(y=rollmean(hr_to_ab_ratio, 10, na.pad=TRUE)),
+              size = 1.5,
+              col = "blue",
+              lty = "dashed",alpha = 1) +
+    #geom_smooth(method=lm , color="green", fill="#69b3a2", se=TRUE) +
+    #geom_rect(aes(xmin=1870,xmax=1919,ymin=0,ymax=Inf),fill = pal[1],alpha=.01) +
+    geom_rect(aes(xmin=1920,xmax=1941,ymin=0,ymax=Inf),fill = pal[2],alpha=.01) +
+    # geom_rect(aes(xmin=1942,xmax=1960,ymin=0,ymax=Inf),fill = pal[3],alpha=.01) +
+    # geom_rect(aes(xmin=1961,xmax=1976,ymin=0,ymax=Inf),fill = pal[4],alpha=.01) +
+    # geom_rect(aes(xmin=1977,xmax=1992,ymin=0,ymax=Inf),fill = pal[5],alpha=.01) +
+    # geom_rect(aes(xmin=1994,xmax=2005,ymin=0,ymax=Inf),fill = pal[6],alpha=.01) +
+    # geom_rect(aes(xmin=2006,xmax=2018,ymin=0,ymax=Inf),fill = pal[7],alpha=.01) +
+    scale_y_continuous(limits = c(0,0.04)) +
+    scale_x_continuous(limits = c(1870,2025),n.breaks = 20) +
+    labs(x = "",
+         y = "Home Runs Per At Bat",
+         title = "Home Runs per At Bat by Year 1870 - 2018",
+         subtitle = "Ten Year Moving Average") +
+    theme_minimal()
+
+
+p
+```
+---
+```{r echo=FALSE, fig.align='center', fig.asp=3/4, fig.retina=3, message=FALSE, warning=FALSE, dpi=300, out.width="100%", paged.print=FALSE, cache=TRUE}
+
+#this chunk plots the first thing
+
+pal <- fromthebottom::phish_palettes$hoist
+
+p <- ggplot(b.agg, aes(x = year_id, y = hr_to_ab_ratio)) +
+    geom_line(size=1.5,
+              color = "red",alpha = 1) +
+    geom_line(aes(y=rollmean(hr_to_ab_ratio, 10, na.pad=TRUE)),
+              size = 1.5,
+              col = "blue",
+              lty = "dashed",alpha = 1) +
+    #geom_smooth(method=lm , color="green", fill="#69b3a2", se=TRUE) +
+    # geom_rect(aes(xmin=1870,xmax=1919,ymin=0,ymax=Inf),fill = pal[1],alpha=.01) +
+    # geom_rect(aes(xmin=1920,xmax=1941,ymin=0,ymax=Inf),fill = pal[2],alpha=.01) +
+    geom_rect(aes(xmin=1942,xmax=1960,ymin=0,ymax=Inf),fill = pal[3],alpha=.01) +
+    # geom_rect(aes(xmin=1961,xmax=1976,ymin=0,ymax=Inf),fill = pal[4],alpha=.01) +
+    # geom_rect(aes(xmin=1977,xmax=1992,ymin=0,ymax=Inf),fill = pal[5],alpha=.01) +
+    # geom_rect(aes(xmin=1994,xmax=2005,ymin=0,ymax=Inf),fill = pal[6],alpha=.01) +
+    # geom_rect(aes(xmin=2006,xmax=2018,ymin=0,ymax=Inf),fill = pal[7],alpha=.01) +
+    scale_y_continuous(limits = c(0,0.04)) +
+    scale_x_continuous(limits = c(1870,2025),n.breaks = 20) +
+    labs(x = "",
+         y = "Home Runs Per At Bat",
+         title = "Home Runs per At Bat by Year 1870 - 2018",
+         subtitle = "Ten Year Moving Average") +
+    theme_minimal()
+
+
+p
+```
+---
+```{r echo=FALSE, fig.align='center', fig.asp=3/4, fig.retina=3, message=FALSE, warning=FALSE, dpi=300, out.width="100%", paged.print=FALSE, cache=TRUE}
+
+#this chunk plots the first thing
+
+pal <- fromthebottom::phish_palettes$hoist
+
+p <- ggplot(b.agg, aes(x = year_id, y = hr_to_ab_ratio)) +
+    geom_line(size=1.5,
+              color = "red",alpha = 1) +
+    geom_line(aes(y=rollmean(hr_to_ab_ratio, 10, na.pad=TRUE)),
+              size = 1.5,
+              col = "blue",
+              lty = "dashed",alpha = 1) +
+    #geom_smooth(method=lm , color="green", fill="#69b3a2", se=TRUE) +
+    # geom_rect(aes(xmin=1870,xmax=1919,ymin=0,ymax=Inf),fill = pal[1],alpha=.01) +
+    # geom_rect(aes(xmin=1920,xmax=1941,ymin=0,ymax=Inf),fill = pal[2],alpha=.01) +
+    # geom_rect(aes(xmin=1942,xmax=1960,ymin=0,ymax=Inf),fill = pal[3],alpha=.01) +
+    geom_rect(aes(xmin=1961,xmax=1976,ymin=0,ymax=Inf),fill = pal[4],alpha=.01) +
+    # geom_rect(aes(xmin=1977,xmax=1992,ymin=0,ymax=Inf),fill = pal[5],alpha=.01) +
+    # geom_rect(aes(xmin=1994,xmax=2005,ymin=0,ymax=Inf),fill = pal[6],alpha=.01) +
+    # geom_rect(aes(xmin=2006,xmax=2018,ymin=0,ymax=Inf),fill = pal[7],alpha=.01) +
+    scale_y_continuous(limits = c(0,0.04)) +
+    scale_x_continuous(limits = c(1870,2025),n.breaks = 20) +
+    labs(x = "",
+         y = "Home Runs Per At Bat",
+         title = "Home Runs per At Bat by Year 1870 - 2018",
+         subtitle = "Ten Year Moving Average") +
+    theme_minimal()
+
+
+p
+```
+---
+```{r echo=FALSE, fig.align='center', fig.asp=3/4, fig.retina=3, message=FALSE, warning=FALSE, dpi=300, out.width="100%", paged.print=FALSE, cache=TRUE}
+
+#this chunk plots the first thing
+
+pal <- fromthebottom::phish_palettes$hoist
+
+p <- ggplot(b.agg, aes(x = year_id, y = hr_to_ab_ratio)) +
+    geom_line(size=1.5,
+              color = "red",alpha = 1) +
+    geom_line(aes(y=rollmean(hr_to_ab_ratio, 10, na.pad=TRUE)),
+              size = 1.5,
+              col = "blue",
+              lty = "dashed",alpha = 1) +
+    #geom_smooth(method=lm , color="green", fill="#69b3a2", se=TRUE) +
+    # geom_rect(aes(xmin=1870,xmax=1919,ymin=0,ymax=Inf),fill = pal[1],alpha=.01) +
+    # geom_rect(aes(xmin=1920,xmax=1941,ymin=0,ymax=Inf),fill = pal[2],alpha=.01) +
+    # geom_rect(aes(xmin=1942,xmax=1960,ymin=0,ymax=Inf),fill = pal[3],alpha=.01) +
+    # geom_rect(aes(xmin=1961,xmax=1976,ymin=0,ymax=Inf),fill = pal[4],alpha=.01) +
+    geom_rect(aes(xmin=1977,xmax=1992,ymin=0,ymax=Inf),fill = pal[5],alpha=.01) +
+    # geom_rect(aes(xmin=1994,xmax=2005,ymin=0,ymax=Inf),fill = pal[6],alpha=.01) +
+    # geom_rect(aes(xmin=2006,xmax=2018,ymin=0,ymax=Inf),fill = pal[7],alpha=.01) +
+    scale_y_continuous(limits = c(0,0.04)) +
+    scale_x_continuous(limits = c(1870,2025),n.breaks = 20) +
+    labs(x = "",
+         y = "Home Runs Per At Bat",
+         title = "Home Runs per At Bat by Year 1870 - 2018",
+         subtitle = "Ten Year Moving Average") +
+    theme_minimal()
+
+
+p
+```
+---
+```{r echo=FALSE, fig.align='center', fig.asp=3/4, fig.retina=3, message=FALSE, warning=FALSE, dpi=300, out.width="100%", paged.print=FALSE, cache=TRUE}
+
+#this chunk plots the first thing
+
+pal <- fromthebottom::phish_palettes$hoist
+
+p <- ggplot(b.agg, aes(x = year_id, y = hr_to_ab_ratio)) +
+    geom_line(size=1.5,
+              color = "red",alpha = 1) +
+    geom_line(aes(y=rollmean(hr_to_ab_ratio, 10, na.pad=TRUE)),
+              size = 1.5,
+              col = "blue",
+              lty = "dashed",alpha = 1) +
+    #geom_smooth(method=lm , color="green", fill="#69b3a2", se=TRUE) +
+    # geom_rect(aes(xmin=1870,xmax=1919,ymin=0,ymax=Inf),fill = pal[1],alpha=.01) +
+    # geom_rect(aes(xmin=1920,xmax=1941,ymin=0,ymax=Inf),fill = pal[2],alpha=.01) +
+    # geom_rect(aes(xmin=1942,xmax=1960,ymin=0,ymax=Inf),fill = pal[3],alpha=.01) +
+    # geom_rect(aes(xmin=1961,xmax=1976,ymin=0,ymax=Inf),fill = pal[4],alpha=.01) +
+    # geom_rect(aes(xmin=1977,xmax=1992,ymin=0,ymax=Inf),fill = pal[5],alpha=.01) +
+    geom_rect(aes(xmin=1994,xmax=2005,ymin=0,ymax=Inf),fill = pal[6],alpha=.01) +
+    # geom_rect(aes(xmin=2006,xmax=2018,ymin=0,ymax=Inf),fill = pal[7],alpha=.01) +
+    scale_y_continuous(limits = c(0,0.04)) +
+    scale_x_continuous(limits = c(1870,2025),n.breaks = 20) +
+    labs(x = "",
+         y = "Home Runs Per At Bat",
+         title = "Home Runs per At Bat by Year 1870 - 2018",
+         subtitle = "Ten Year Moving Average") +
+    theme_minimal()
+
+
+p
+```
+---
+```{r echo=FALSE, fig.align='center', fig.asp=3/4, fig.retina=3, message=FALSE, warning=FALSE, dpi=300, out.width="100%", paged.print=FALSE, cache=TRUE}
+
+#this chunk plots the first thing
+
+pal <- fromthebottom::phish_palettes$hoist
+
+p <- ggplot(b.agg, aes(x = year_id, y = hr_to_ab_ratio)) +
+    geom_line(size=1.5,
+              color = "red",alpha = 1) +
+    geom_line(aes(y=rollmean(hr_to_ab_ratio, 10, na.pad=TRUE)),
+              size = 1.5,
+              col = "blue",
+              lty = "dashed",alpha = 1) +
+    #geom_smooth(method=lm , color="green", fill="#69b3a2", se=TRUE) +
+    # geom_rect(aes(xmin=1870,xmax=1919,ymin=0,ymax=Inf),fill = pal[1],alpha=.01) +
+    # geom_rect(aes(xmin=1920,xmax=1941,ymin=0,ymax=Inf),fill = pal[2],alpha=.01) +
+    # geom_rect(aes(xmin=1942,xmax=1960,ymin=0,ymax=Inf),fill = pal[3],alpha=.01) +
+    # geom_rect(aes(xmin=1961,xmax=1976,ymin=0,ymax=Inf),fill = pal[4],alpha=.01) +
+    # geom_rect(aes(xmin=1977,xmax=1992,ymin=0,ymax=Inf),fill = pal[5],alpha=.01) +
+    # geom_rect(aes(xmin=1994,xmax=2005,ymin=0,ymax=Inf),fill = pal[6],alpha=.01) +
+    geom_rect(aes(xmin=2006,xmax=2018,ymin=0,ymax=Inf),fill = pal[7],alpha=.01) +
     scale_y_continuous(limits = c(0,0.04)) +
     scale_x_continuous(limits = c(1870,2025),n.breaks = 20) +
     labs(x = "",
@@ -345,7 +539,7 @@ background-image: url(images/flashlight_2.jpg)
 background-size: contain
 
 --
-### Lesson #1: There is always _story_ behind the data 
+### Lesson #1: There is always a _story_ behind the data 
 
 --
 ### Learn that story rather than taking data at face value
@@ -722,5 +916,21 @@ background-size: contain
 
 --
 #### Lesson #5: Learn Goodhart's Law.
+#### When a measure becomes an outcome, it ceases to be a useful measure.
 ---
+class: top, left
+background-image: url(images/flashlight_2.jpg)
+background-size: contain
+#### Thank you Tuba for the invitation
+#### This slide deck was created using R, Rmarkdown and the Xaringan Package
+#### Photos pulled from Google Photos and Unsplash. 
+#### Errors, Typos, and Oopsies Are Mine. Please let me know if you see something wacky
+#### Code and Slides available at:
+#### [bradweiner.info/talk](https://bradweiner.info/talk/)
+### Go Ahead. Ask me anything!
 
+### Contact
+####  `r fa("envelope", fill = "steelblue")`   brad.weiner@colorado.edu
+####  `r fa("twitter", fill = "steelblue")`    @brad_weiner
+####  `r fa("desktop", fill = "steelblue")`    bradweiner.info
+---

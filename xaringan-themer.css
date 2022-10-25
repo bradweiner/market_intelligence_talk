@@ -54,7 +54,7 @@
   --inverse-header-color: #000000;
   --inverse-link-color: #ffffff;
   --title-slide-background-color: #000000;
-  --title-slide-text-color: #ffffff;
+  --title-slide-text-color: white;
   --header-background-color: #ffffff;
   --header-background-text-color: #000000;
   --primary: #000000;
@@ -139,7 +139,7 @@ a, a > code {
 }
 .title-slide {
   background-color: var(--title-slide-background-color);
-  background-image: url("images/flashlight_2.jpg");
+  background-image: url("images/cropped-baseball-field-grass-turf.jpg");
   background-size: cover;
 }
 .title-slide .remark-slide-number {
