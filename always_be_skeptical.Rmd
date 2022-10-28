@@ -46,7 +46,8 @@ library(fontawesome)
 ####  `r fa("university", fill = "steelblue")`      20 years experience in higher education
 ####  `r fa("school", fill = "steelblue")`      15 years on campus (Kansas, Vanderbilt, Minnesota, Colorado)
 ####  `r fa("database", fill = "steelblue")`        5 years in Ed-Tech/Consultancy
-####  `r fa("laptop-code", fill = "steelblue")`     13 years Higher Ed Analytics/Data Science 
+####  `r fa("laptop-code", fill = "steelblue")`     13 years Higher Ed Analytics/Data Science
+####  `r fa("pen-alt", fill = "steelblue")`      English/Creative Writing Major and Imposter
 
 ### Contact
 ####  `r fa("envelope", fill = "steelblue")`   brad.weiner@colorado.edu
@@ -909,6 +910,15 @@ class: top, center, inverse
 
 ![](images/snorkel.png)
 ]
+---
+class: middle, left, inverse
+background-image: url(images/calculator.jpg)
+background-size: contain
+
+--
+#### Lesson #4: Assuming similar accuracy, 
+#### always preference the simple model.
+
 ---
 class: top, center, inverse
 background-image: url(images/goodhart.png)
